@@ -1,20 +1,36 @@
 # mongo-action
-Github action to create a Docker container from the official mongo image. Useful for testing purposes.
+
+![mongo-action CI](https://github.com/DigiPie/mongo-action/workflows/mongo-action%20CI/badge.svg)
+
+Github action to create a Docker container from the official mongo image. Useful for testing purposes. The MongoDB instance's port will be exposed to host and other containers.
 
 ## Inputs
 
-### `who-to-greet`
+### `image-version`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Optional:** The `mongo` Docker image version to use. Default: `"latest"`.
 
-## Outputs
+### `port`
 
-### `time`
-
-The time we greeted you.
+**Optional:** The `mongo` port to use. Default: `27017`.
 
 ## Example usage
 
-uses: actions/hello-world-docker-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
+```yaml
+on: [push]
+
+jobs:
+  test_mongo_action:
+    runs-on: ubuntu-latest
+    name: Test mongo-action
+    steps:
+      - name: Create mongo Docker container
+        id: build_mongo_docker
+        uses: DigiPie/mongo-action@v1.0.0
+      - name: Install mongodb-clients
+        id: install_mongodb_clients
+        run: sudo apt install mongodb-clients
+      - name: Test mongo connection
+        id: test_mongo_connection
+        run: "sudo mongo localhost:27017"
+```

@@ -1,15 +1,17 @@
+name: mongo-action CI
 on: [push]
 
 jobs:
-  hello_world_job:
+  test_mongo_action:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Test mongo-action
     steps:
-    - name: Hello world action step
-      id: hello
-      uses: actions/hello-world-docker-action@v1
-      with:
-        who-to-greet: 'Mona the Octocat'
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Create mongo Docker container
+        id: build_mongo_docker
+        uses: DigiPie/mongo-action@v1.0.0
+      - name: Install mongodb-clients
+        id: install_mongodb_clients
+        run: sudo apt install mongodb-clients
+      - name: Test mongo connection
+        id: test_mongo_connection
+        run: "sudo mongo localhost:27017"

@@ -1,16 +1,19 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: "mongo-action"
+author: "Evan Tay"
+description: "Github action to create a Docker container from the official mongo image."
+branding:
+  icon: "database"
+  color: "green"
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  image_version:
+    description: "The mongo Docker image version to use"
+    required: false
+    default: "latest"
+  port:
+    description: "The MongoDB port to use"
+    required: false
+    default: 27017
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+  using: "node12"
+  main: "dist/index.js"
