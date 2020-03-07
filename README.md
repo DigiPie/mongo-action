@@ -2,7 +2,7 @@
 
 ![mongo-action CI](https://github.com/DigiPie/mongo-action/workflows/mongo-action%20CI/badge.svg)
 
-**mongo-action** is a Github Action which creates a mongo Docker container using the official [Dockerhub image](https://hub.docker.com/_/mongo). It is useful for tests which require a MongoDB server. The MongoDB instance's port will be exposed to the host running the Github Workflow, and also other containers on the same host.
+**mongo-action** is a Github Action which creates a mongo Docker container using the official [Dockerhub image](https://hub.docker.com/_/mongo). The MongoDB instance's port will be exposed to other containers and also to the host running the Github Workflow.
 
 ## Inputs
 
