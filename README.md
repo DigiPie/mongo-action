@@ -1,8 +1,8 @@
 # mongo-action
 
-![mongo-action CI](https://github.com/DigiPie/mongo-action/workflows/mongo-action%20CI/badge.svg)
+[![GitHub Actions status](https://github.com/DigiPie/mongo-action/workflows/mongo-action%20CI/badge.svg)](https://github.com/DigiPie/mongo-action/actions) [![GitHub Releases](https://img.shields.io/github/release/DigiPie/mongo-action.svg)](https://github.com/DigiPie/mongo-action/releases)
 
-Github action to create a Docker container from the official mongo image. Useful for testing purposes. The MongoDB instance's port will be exposed to host and other containers.
+**mongo-action** is a Github Action which creates a mongo Docker container using the official [Dockerhub image](https://hub.docker.com/_/mongo). The MongoDB instance's port will be exposed to other containers and also to the host running the Github Workflow.
 
 ## Inputs
 
@@ -37,3 +37,6 @@ jobs:
         id: test_mongo_connection
         run: "sudo mongo localhost:27017"
 ```
+
+## Example usage with NodeJS-ExpressJS
+Visit [DigiPie/mocha-chai-mongoose](https://github.com/DigiPie/mocha-chai-mongoose) for an example of how you can use **mongo-action** with **Mocha** and **Chai** to perform automated API testing for a **Node-ExpressJS-Mongoose** app.
