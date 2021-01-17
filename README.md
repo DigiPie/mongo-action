@@ -8,7 +8,7 @@
 
 ### `image-version`
 
-**Optional:** The `mongo` Docker image version to use. Default: `"latest"`.
+**Optional:** The `mongo` Docker image version to use. Default: `"latest"`. Refer to the official [Dockerhub image page](https://hub.docker.com/_/mongo).
 
 ### `port`
 
@@ -30,9 +30,6 @@ jobs:
         with:
           image-version: latest
           port: 27017
-      - name: Install mongodb-clients
-        id: install_mongodb_clients
-        run: sudo apt install mongodb-clients
       - name: Test mongo connection
         id: test_mongo_connection
         run: "sudo mongo localhost:27017"
