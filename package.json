@@ -1,0 +1,29 @@
+{
+  "name": "mongo-action",
+  "version": "1.0.1",
+  "description": "A Github Action to create a Docker container from the official mongo image.",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "child_process": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DigiPie/mongo-action.git"
+  },
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "github-actions"
+  ],
+  "author": "Evan Tay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DigiPie/mongo-action/issues"
+  },
+  "homepage": "https://github.com/DigiPie/mongo-action#readme"
+}

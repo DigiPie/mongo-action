@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Create mongo Docker container
         id: build_mongo_docker
-        uses: DigiPie/mongo-action@v1.0.0
+        uses: DigiPie/mongo-action@v1.0.1
         with:
           image-version: latest
           port: 27017

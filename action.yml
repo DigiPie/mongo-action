@@ -1,7 +1,7 @@
 # action.yml
 name: "mongo-action"
 author: "Evan Tay"
-description: "Github action to create a Docker container from the official mongo image."
+description: "A Github Action to create a Docker container from the official mongo image."
 branding:
   icon: "database"
   color: "green"
