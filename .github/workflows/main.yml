@@ -12,9 +12,6 @@ jobs:
         with:
           image-version: latest
           port: 27017
-      - name: Install mongodb-clients
-        id: install_mongodb_clients
-        run: sudo apt install mongodb-clients
       - name: Test mongo connection
         id: test_mongo_connection
         run: "sudo mongo localhost:27017"
