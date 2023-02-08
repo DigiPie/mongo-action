@@ -6,7 +6,7 @@
 
 ## Inputs
 
-### `image-version`
+### `image_version`
 
 **Optional:** The `mongo` Docker image version to use. Default: `"latest"`. Refer to the official [Dockerhub image page](https://hub.docker.com/_/mongo).
 
@@ -17,6 +17,7 @@
 ## Example usage
 
 ```yaml
+name: mongo-action CI
 on: [push]
 
 jobs:
@@ -24,15 +25,21 @@ jobs:
     runs-on: ubuntu-latest
     name: Test mongo-action
     steps:
+      - name: Install mongosh
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg
+          wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-mongosh
       - name: Create mongo Docker container
-        id: build_mongo_docker
-        uses: DigiPie/mongo-action@v1.0.1
+        uses: DigiPie/mongo-action@v2.0.0
         with:
-          image-version: latest
+          image_version: latest
           port: 27017
       - name: Test mongo connection
-        id: test_mongo_connection
-        run: "sudo mongo localhost:27017"
+        run: "sudo mongosh localhost:27017"
 ```
 
 ## Example usage with NodeJS-ExpressJS
