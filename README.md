@@ -6,7 +6,7 @@
 
 ## Inputs
 
-### `image-version`
+### `image_version`
 
 **Optional:** The `mongo` Docker image version to use. Default: `"latest"`. Refer to the official [Dockerhub image page](https://hub.docker.com/_/mongo).
 
@@ -26,9 +26,9 @@ jobs:
     steps:
       - name: Create mongo Docker container
         id: build_mongo_docker
-        uses: DigiPie/mongo-action@v1.0.1
+        uses: DigiPie/mongo-action@v1.0.2
         with:
-          image-version: latest
+          image_version: latest
           port: 27017
       - name: Test mongo connection
         id: test_mongo_connection
