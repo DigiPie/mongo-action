@@ -8,13 +8,13 @@
 
 ### `image_version`
 
-**Optional:** The `mongo` Docker image version to use. Default: `"latest"`. Refer to the official [Dockerhub image page](https://hub.docker.com/_/mongo).
+**Optional:** the mongo Docker image version to use. Default to `latest`. Refer to the official [Dockerhub image page](https://hub.docker.com/_/mongo).
 
 ### `port`
 
-**Optional:** The `mongo` port to use. Default: `27017`.
+**Optional:** the port where the mongo service will be published at. Defaults to `27017`. Refer to the official [docker run page](https://docs.docker.com/engine/reference/commandline/run/#publish).
 
-## Example usage
+## Example usage with mongosh
 
 ```yaml
 name: mongo-action CI
@@ -25,7 +25,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Test mongo-action
     steps:
-      - name: Install mongosh
+      - name: Create mongo Docker container
+        uses: DigiPie/mongo-action@v2.0.0
+        with:
+          image_version: latest
+          port: 27017
+      - name: Install mongosh command
         run: |
           sudo apt-get update
           sudo apt-get install -y wget gnupg
@@ -33,11 +38,6 @@ jobs:
           echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
           sudo apt-get update
           sudo apt-get install -y mongodb-mongosh
-      - name: Create mongo Docker container
-        uses: DigiPie/mongo-action@v2.0.0
-        with:
-          image_version: latest
-          port: 27017
       - name: Test mongo connection
         run: "sudo mongosh localhost:27017"
 ```
