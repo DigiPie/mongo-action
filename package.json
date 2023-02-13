@@ -1,14 +1,17 @@
 {
   "name": "mongo-action",
-  "version": "2.0.0",
-  "description": "A Github Action to create a Docker container from the official mongo image.",
+  "version": "2.0.1",
+  "description": "A Github Action that creates a Docker container using the official mongo image.",
   "main": "index.js",
   "dependencies": {
     "@actions/core": "^1.9.1",
     "child_process": "^2.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@vercel/ncc": "^0.36.1"
+  },
   "scripts": {
+    "build": "ncc build index.js --license licenses.txt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +21,8 @@
   "keywords": [
     "mongo",
     "mongodb",
+    "docker",
+    "dockerfile",
     "github-actions"
   ],
   "author": "Evan Tay",

@@ -1,7 +1,7 @@
 # action.yml
 name: "mongo-action"
 author: "Evan Tay"
-description: "A Github Action to create a Docker container from the official mongo image."
+description: "A Github Action that creates a Docker container using the official mongo image."
 branding:
   icon: "database"
   color: "green"
@@ -11,7 +11,7 @@ inputs:
     required: false
     default: "latest"
   port:
-    description: "The MongoDB port to use"
+    description: "The port where the mongo service will be published at" 
     required: false
     default: 27017
 runs:
