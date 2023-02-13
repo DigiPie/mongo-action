@@ -2,17 +2,18 @@
 
 [![GitHub Actions status](https://github.com/DigiPie/mongo-action/workflows/mongo-action%20CI/badge.svg)](https://github.com/DigiPie/mongo-action/actions) [![GitHub Releases](https://img.shields.io/github/release/DigiPie/mongo-action.svg)](https://github.com/DigiPie/mongo-action/releases)
 
-**mongo-action** is a Github Action which creates a mongo Docker container using the official [Dockerhub image](https://hub.docker.com/_/mongo). The MongoDB instance's port will be exposed to other containers and also to the host running the Github Workflow.
+**mongo-action** is a Github Action that creates a Docker container using the official mongo image from [Dockerhub](https://hub.docker.com/_/mongo). 
+The MongoDB server port will be published/exposed to the host running the Github Workflow.
 
 ## Inputs
 
 ### `image_version`
 
-**Optional:** the mongo Docker image version to use. Default to `latest`. Refer to the official [Dockerhub image page](https://hub.docker.com/_/mongo).
+**Optional.** The mongo Docker image version to use. Defaults to `latest`. Refer to the official [Dockerhub image page](https://hub.docker.com/_/mongo).
 
 ### `port`
 
-**Optional:** the port where the mongo service will be published at. Defaults to `27017`. Refer to the official [docker run page](https://docs.docker.com/engine/reference/commandline/run/#publish).
+**Optional.** The port where the mongo service will be published at - i.e. `docker run -p ${port}:27017 ...`. Defaults to `27017`. Refer to the official [docker run page](https://docs.docker.com/engine/reference/commandline/run/#publish).
 
 ## Example usage with mongosh
 
@@ -26,7 +27,7 @@ jobs:
     name: Test mongo-action
     steps:
       - name: Create mongo Docker container
-        uses: DigiPie/mongo-action@v2.0.0
+        uses: DigiPie/mongo-action@v2.0.1
         with:
           image_version: latest
           port: 27017
@@ -44,4 +45,4 @@ jobs:
 
 ## Example usage with NodeJS-ExpressJS
 
-Visit [DigiPie/mocha-chai-mongoose](https://github.com/DigiPie/mocha-chai-mongoose) for an example of how you can use **mongo-action** with **Mocha** and **Chai** to perform automated API testing for a **Node-ExpressJS-Mongoose** app.
+Refer to [DigiPie/mocha-chai-mongoose](https://github.com/DigiPie/mocha-chai-mongoose) for how you could use **mongo-action** with **Mocha** and **Chai** to perform automated API testing for a **NodeJS-ExpressJS-Mongoose** app.
