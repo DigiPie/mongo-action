@@ -6,7 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Test mongo-action
     steps:
-      - name: Install mongosh
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Create mongo Docker container
+        uses: ./
+        with:
+          image_version: jammy
+          port: 27017
+      - name: Install mongosh command
         run: |
           sudo apt-get update
           sudo apt-get install -y wget gnupg
@@ -14,10 +21,5 @@ jobs:
           echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
           sudo apt-get update
           sudo apt-get install -y mongodb-mongosh
-      - name: Create mongo Docker container
-        uses: DigiPie/mongo-action@v2.0.0
-        with:
-          image_version: latest
-          port: 27017
       - name: Test mongo connection
         run: "sudo mongosh localhost:27017"

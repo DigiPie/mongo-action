@@ -1,0 +1,23 @@
+# action.yml
+name: "mongo-action"
+author: "Evan Tay"
+description: "A Github Action to create a Docker container from the official mongo image."
+branding:
+  icon: "database"
+  color: "green"
+inputs:
+  image_version:
+    description: "The mongo Docker image version to use"
+    required: false
+    default: "latest"
+  port:
+    description: "The MongoDB port to use"
+    required: false
+    default: 27017
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    IMAGE_VERSION: ${{ inputs.image_version }}
+  args:
+    - ${{ inputs.image_version }}

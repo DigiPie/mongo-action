@@ -1,13 +1,8 @@
 {
   "name": "mongo-action",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A Github Action to create a Docker container from the official mongo image.",
   "main": "index.js",
-  "dependencies": {
-    "@actions/core": "^1.9.1",
-    "child_process": "^2.0.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +13,8 @@
   "keywords": [
     "mongo",
     "mongodb",
+    "docker",
+    "dockerfile",
     "github-actions"
   ],
   "author": "Evan Tay",
