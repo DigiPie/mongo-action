@@ -13,7 +13,7 @@ The MongoDB server port will be published/exposed to the host running the Github
 
 ### `port`
 
-**Optional.** The port where the mongo service will be published at - i.e. `docker run -p ${port}:27017 ...`. Defaults to `27017`. Refer to the official [docker run page](https://docs.docker.com/engine/reference/commandline/run/#publish).
+**Optional.** The port where the mongo service will be published at (i.e. `docker run -p ${port}:27017`). Defaults to `27017`. Refer to the official [docker run page](https://docs.docker.com/engine/reference/commandline/run/#publish).
 
 ## Example usage with mongosh
 
