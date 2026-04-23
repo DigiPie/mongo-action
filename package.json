@@ -4,7 +4,7 @@
   "description": "A Github Action that creates a Docker container using the official mongo image.",
   "main": "index.js",
   "dependencies": {
-    "@actions/core": "^1.9.1",
+    "@actions/core": "^1.11.1",
     "child_process": "^2.0.0"
   },
   "devDependencies": {
